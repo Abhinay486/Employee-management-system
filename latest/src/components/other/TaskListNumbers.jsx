@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TaskListNumbers = (props) => {
-    console.log(props);
+    // console.log(props);
   return (
     <div className='text-white flex mt-10  justify-between gap-5 screen'>
         <div className='rounded-xl w-[45%] bg-red-500 p-6 px-9'>

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import Header from "../other/Header.jsx";
 import { AuthContext } from "../../context/AuthProvider.jsx";
-import { func } from "prop-types";
+import { array, func } from "prop-types";
 import EmployeeDetails from "../other/EmployeeDetails.jsx";
 import { Link } from "react-router-dom";
+
 const AdminDashboard = (props) => {
   const authData = useContext(AuthContext);
-  // console.log(authData)
+  const dataa = authData[0];
   const [taskTitle, setTaskTitle] = useState("");
   const [date, setDate] = useState("");
   const [assignempName, setAssignEmpName] = useState("");
@@ -26,19 +27,20 @@ const AdminDashboard = (props) => {
       completed: false,
       newTask: true,
     });
-    const data = JSON.parse(localStorage.getItem("employee"));
-    //
+    const data1 = JSON.parse(localStorage.getItem("employee"));
+    // console.log('sdfdfd', data1)
+    // //
     //  console.log(userTasks)
-    data.forEach(function (elem) {
-      if (assignempName == elem.name) {
-        console.log(elem.tasks);
-        console.log("A");
-        elem.tasks.push(userTasks);
-        console.log("B");
-      }
-    });
-    localStorage.setItem("employee", JSON.stringify(data));
-    console.log(data);
+    // data.forEach(function (elem) {
+      //   if (assignempName == elem.name) {
+        // console.log(elem.tasks);
+        // console.log("A");
+        //     elem.tasks.push(userTasks);
+        // console.log("B");
+        //   }
+    // });
+    // localStorage.setItem("employee", JSON.stringify(data));
+    // console.log(data);
     setTaskTitle("");
     setDate("");
     setAssignEmpName("");
@@ -127,7 +129,7 @@ const AdminDashboard = (props) => {
           <h2 className="w-1/5 text-blue-400">Newtasks</h2>
           <h2 className="w-1/5 text-red-400">Failed</h2>
         </div>
-        {authData.employee.map(function (e, idx) {
+        {dataa.employee.map(function (e, idx) {
           return (
             <div
               key={idx}
