@@ -11,8 +11,8 @@ const Login = ({ handleLogin }) => {
   };
   return (
     <>
-      <div className="p-10 h-screen w-screen relative flex items-center justify-center">
-        <div className="flex items-center rounded-xl justify-center border-2 border-emerald-600 p-32">
+      <div className="p-10 h-screen w-screen relative flex items-center justify-center bg-[url(https://wallpapercave.com/wp/wp5489584.jpg)] bg-cover bg-no-repeat bg-center">
+        <div className="flex items-center rounded-xl justify-center border-2 border-emerald-600 p-28  backdrop-blur-[2px]">
           <form
             className="flex flex-col gap-5 text-white"
             onSubmit={(e) => {
@@ -21,7 +21,7 @@ const Login = ({ handleLogin }) => {
           >
             <input
               required
-              className="bg-black rounded-full placeholder:text-gray-400 p-[10px] pl-6 border-2 border-emerald-600"
+              className="bg-white rounded-full placeholder:text-gray-400 p-[10px] pl-6 border-2 border-emerald-600"
               type="email"
               placeholder="Enter email"
               value={email}
@@ -31,7 +31,7 @@ const Login = ({ handleLogin }) => {
             />
             <input
               required
-              className="bg-black rounded-full placeholder:text-gray-400 p-[10px] pl-6 border-2 border-emerald-600"
+              className="bg-white rounded-full placeholder:text-gray-400 p-[10px] pl-6 border-2 border-emerald-600"
               type="password"
               placeholder="password"
               value={password}
