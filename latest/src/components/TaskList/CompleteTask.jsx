@@ -13,7 +13,11 @@ const CompleteTask = ({data}) => {
           {data.description}
         </p>
         <div className='flex justify-between mt-4'>
-            <button className='bg-green-500 p-2 text-sm rounded'>complete</button>
+            <button onClick={() => {
+              data.taskCount.completed += 1;
+              data.taskCount.active -= 1;
+
+            }} className='bg-green-500 p-2 text-sm rounded'>complete</button>
             
         </div>
       </div>

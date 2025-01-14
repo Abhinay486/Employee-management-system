@@ -3,7 +3,7 @@ import Header from "../other/Header.jsx";
 import { AuthContext } from "../../context/AuthProvider.jsx";
 
 const AdminDashboard = (props) => {
-  const authData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
   
   const [formState, setFormState] = useState({
     title: "",
@@ -48,12 +48,14 @@ const AdminDashboard = (props) => {
             elem.tasks = [newTask];
           }
           elem.taskCount.active += 1;
+          elem.taskCount.newTask += 1;
           localStorage.setItem("employee", JSON.stringify(data)); 
           console.log(`Task added for ${assignempName}:`, newTask);
         }
       });
     }
-
+    setUserData(data);
+    
     // Reset form
     setFormState({
       title: "",
@@ -63,10 +65,9 @@ const AdminDashboard = (props) => {
       description: "",
     });
   };
-  const dataa = authData[0];
   return (
     <div className="h-screen w-full text-white">
-      <Header changeUser={props.changeUser} />
+      <Header changeUser={props.changeUser} name="Marvel" />
       <div>
         <form
           onSubmit={formHandler}
@@ -148,7 +149,7 @@ const AdminDashboard = (props) => {
           <h2 className="w-1/5 text-red-400">Failed</h2>
         </div>
         {/* Employee Task Counts */}
-        {dataa.employee.map((e, idx) => (
+        {userData.map((e, idx) => (
           <div
             key={idx}
             className="border-red-400 border-2 h-12 flex items-center justify-center rounded-xl mb-2"

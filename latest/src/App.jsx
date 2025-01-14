@@ -10,15 +10,16 @@ import { AuthContext } from "./context/AuthProvider";
 import EmployeeDetails from "./components/other/EmployeeDetails";
 const App = () => {
   const [user, setUser] = useState(null);
-  const authData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
   const [luserData, setLuserData] = useState(null);
   useEffect(() => {
-    if (authData) {
-      const loggedInUser = localStorage.getItem("loggedIn");
-      if (loggedInUser) {
-        const userData = JSON.parse(loggedInUser);
-        setUser(userData.role);
-        setLuserData(userData.data);
+    
+    const loggedInUser = localStorage.getItem("loggedIn");
+    if (loggedInUser) {
+      const parsedData = JSON.parse(loggedInUser);
+      setUser(parsedData.role); // Set the role (admin or employee)
+      if (parsedData.data) {
+        setLuserData(parsedData.data); // Set additional user data if available
       }
     }
   }, []);
@@ -27,8 +28,8 @@ const App = () => {
     if (email == "marvel@avenger.com" && password == "123") {
       setUser("admin");
       localStorage.setItem("loggedIn", JSON.stringify({ role: "admin" }));
-    } else if (authData) {
-      const e = authData[0].employee.find(
+    } else if (userData) {
+      const e = userData.find(
         (e) => e.email === email && e.password === password
       );
       if (e) {

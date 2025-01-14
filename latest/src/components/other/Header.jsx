@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 const Header = (props) => {
   const logout = () => {
     localStorage.setItem("loggedIn", "");
     //  window.location.reload()
     props.changeUser("");
   };
+  
   return (
     <header className="text-white m-6">
       <nav className="flex justify-between items-center">
         <h1 className="text-xl">
           Hi <br />
-          <span className="text-2xl">data.name</span>👋{" "}
+          <span className="text-2xl">{props.name}</span>👋{" "}
         </h1>
         <button
           onClick={logout}
