@@ -55,7 +55,7 @@ const App = () => {
         <Login handleLogin={handleLogin} />
       )}
     </>
-  );
+  )
 };
 
 export default App;
